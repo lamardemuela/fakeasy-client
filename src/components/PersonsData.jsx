@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import { useNavigate } from "react-router-dom";
 import { CopyAllRounded } from "@mui/icons-material";
 import { Box, IconButton, Typography } from "@mui/material";
@@ -6,8 +6,8 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 
-function CompaniesData(props) {
-  const navigate = useNavigate();
+function PersonsData(props) {
+    const navigate = useNavigate();
 
   const handleCopy = async (value) => {
     try {
@@ -16,7 +16,6 @@ function CompaniesData(props) {
       navigate("/error");
     }
   };
-
   return (
     <Box
       sx={{
@@ -29,19 +28,31 @@ function CompaniesData(props) {
         borderRadius: "8px",
       }}
     >
-      <Typography variant="h6">Company Data</Typography>
+      <Typography variant="h6">Person Data</Typography>
       <List>
         <ListItem
           secondaryAction={
             <IconButton
               edge="end"
-              onClick={() => handleCopy(props.eachData.name)}
+              onClick={() => handleCopy(props.eachData.firstname)}
             >
               <CopyAllRounded />
             </IconButton>
           }
         >
-          <ListItemText primary={props.eachData.name} secondary="Name" />
+          <ListItemText primary={props.eachData.firstname} secondary="First name" />
+        </ListItem>
+        <ListItem
+          secondaryAction={
+            <IconButton
+              edge="end"
+              onClick={() => handleCopy(props.eachData.lastname)}
+            >
+              <CopyAllRounded />
+            </IconButton>
+          }
+        >
+          <ListItemText primary={props.eachData.lastname} secondary="Last name" />
         </ListItem>
         <ListItem
           secondaryAction={
@@ -54,18 +65,6 @@ function CompaniesData(props) {
           }
         >
           <ListItemText primary={props.eachData.email} secondary="Email" />
-        </ListItem>
-        <ListItem
-          secondaryAction={
-            <IconButton
-              edge="end"
-              onClick={() => handleCopy(props.eachData.vat)}
-            >
-              <CopyAllRounded />
-            </IconButton>
-          }
-        >
-          <ListItemText primary={props.eachData.vat} secondary="Vat" />
         </ListItem>
         <ListItem
           secondaryAction={
@@ -86,29 +85,29 @@ function CompaniesData(props) {
           secondaryAction={
             <IconButton
               edge="end"
-              onClick={() => handleCopy(props.eachData.country)}
+              onClick={() => handleCopy(props.eachData.birthday)}
             >
               <CopyAllRounded />
             </IconButton>
           }
         >
-          <ListItemText primary={props.eachData.country} secondary="Country" />
+          <ListItemText primary={props.eachData.birthday} secondary="Birthday" />
         </ListItem>
-        {/* <ListItem
+        <ListItem
           secondaryAction={
             <IconButton
               edge="end"
-              onClick={() => handleCopy(props.eachData.addresses[0].street)}
+              onClick={() => handleCopy(props.eachData.gender)}
             >
               <CopyAllRounded />
             </IconButton>
           }
         >
           <ListItemText
-            primary={props.eachData.addresses[0].street}
-            secondary="Address"
+            primary={props.eachData.gender}
+            secondary="Gender"
           />
-        </ListItem> */}
+        </ListItem>
         <ListItem
           secondaryAction={
             <IconButton
@@ -129,4 +128,4 @@ function CompaniesData(props) {
   )
 }
 
-export default CompaniesData;
+export default PersonsData

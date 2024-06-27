@@ -12,6 +12,10 @@ import AddressesData from "../components/AddressesData";
 import BooksData from "../components/BooksData";
 import CompaniesData from "../components/CompaniesData";
 import CreditCardsData from "../components/CreditCardsData";
+import PersonsData from "../components/PersonsData";
+import PlacesData from "../components/PlacesData";
+import TextData from "../components/TextData";
+import UsersData from "../components/UsersData";
 
 function DataGenerator() {
   const categoriesArr = [
@@ -19,10 +23,8 @@ function DataGenerator() {
     "books",
     "companies",
     "credit_cards",
-    "images",
     "persons",
     "places",
-    "products",
     "texts",
     "users",
   ];
@@ -46,9 +48,9 @@ function DataGenerator() {
       navigate("/error");
     }
 
-    if (dataGenerated === null) {
-      return <CircularProgress />;
-    }
+    // if (dataGenerated === null) {
+    //   return <CircularProgress />;
+    // }
   };
 
   const handleSelectChange = (e) => {
@@ -86,7 +88,9 @@ function DataGenerator() {
             <em>None</em>
           </MenuItem>
             {categories.map((eachCategory, index) => {
-                return <MenuItem key={index} value={eachCategory}> {eachCategory} </MenuItem>
+                return (
+                  eachCategory === "credit_cards" ? <MenuItem key={index} value={eachCategory}> Credit Cards </MenuItem> : <MenuItem key={index} value={eachCategory}> {`${eachCategory[0].toUpperCase()}${eachCategory.slice(1)}`} </MenuItem>
+                )
               })
             }
           </Select>
@@ -110,6 +114,10 @@ function DataGenerator() {
                {selectedCategory === "books" && <BooksData eachData={eachData} />}
                {selectedCategory === "companies" && <CompaniesData eachData={eachData} />}
                {selectedCategory === "credit_cards" && <CreditCardsData eachData={eachData} />}
+               {selectedCategory === "persons" && <PersonsData eachData={eachData} />}
+               {selectedCategory === "places" && <PlacesData eachData={eachData} />}
+               {selectedCategory === "texts" && <TextData eachData={eachData} />}
+               {selectedCategory === "users" && <UsersData eachData={eachData} />}
             </Box>
           );
         })}
