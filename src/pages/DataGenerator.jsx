@@ -47,10 +47,6 @@ function DataGenerator() {
     } catch (error) {
       navigate("/error");
     }
-
-    // if (dataGenerated === null) {
-    //   return <CircularProgress />;
-    // }
   };
 
   const handleSelectChange = (e) => {
@@ -64,6 +60,7 @@ function DataGenerator() {
         flexDirection: "column",
         gap: "12px",
         justifyContent: "center",
+        alignItems:"center"
       }}
     >
       <Box
@@ -85,14 +82,21 @@ function DataGenerator() {
             onChange={handleSelectChange}
           >
             <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
+              <em>None</em>
+            </MenuItem>
             {categories.map((eachCategory, index) => {
-                return (
-                  eachCategory === "credit_cards" ? <MenuItem key={index} value={eachCategory}> Credit Cards </MenuItem> : <MenuItem key={index} value={eachCategory}> {`${eachCategory[0].toUpperCase()}${eachCategory.slice(1)}`} </MenuItem>
-                )
-              })
-            }
+              return eachCategory === "credit_cards" ? (
+                <MenuItem key={index} value={eachCategory}>
+                  Credit Cards
+                </MenuItem>
+              ) : (
+                <MenuItem key={index} value={eachCategory}>
+                  {`${eachCategory[0].toUpperCase()}${eachCategory.slice(
+                    1
+                  )}`}
+                </MenuItem>
+              );
+            })}
           </Select>
         </FormControl>
         <TextField
@@ -105,19 +109,48 @@ function DataGenerator() {
           sx={{ width: 150 }}
         />
       </Box>
-      <Button onClick={handleGenerateData} disabled={selectedCategory === "" ? true : false}> Generate data </Button>
+      <Button
+        onClick={handleGenerateData}
+        disabled={selectedCategory === "" ? true : false}
+        color="secondary"
+        variant="contained"
+      >
+        Generate data
+      </Button>
       {dataGenerated != null &&
         dataGenerated.map((eachData, index) => {
           return (
-            <Box sx={{display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}} key={index}>
-               {selectedCategory === "addresses" && <AddressesData eachData={eachData} />}
-               {selectedCategory === "books" && <BooksData eachData={eachData} />}
-               {selectedCategory === "companies" && <CompaniesData eachData={eachData} />}
-               {selectedCategory === "credit_cards" && <CreditCardsData eachData={eachData} />}
-               {selectedCategory === "persons" && <PersonsData eachData={eachData} />}
-               {selectedCategory === "places" && <PlacesData eachData={eachData} />}
-               {selectedCategory === "texts" && <TextData eachData={eachData} />}
-               {selectedCategory === "users" && <UsersData eachData={eachData} />}
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              key={index}
+            >
+              {selectedCategory === "addresses" && (
+                <AddressesData eachData={eachData} />
+              )}
+              {selectedCategory === "books" && (
+                <BooksData eachData={eachData} />
+              )}
+              {selectedCategory === "companies" && (
+                <CompaniesData eachData={eachData} />
+              )}
+              {selectedCategory === "credit_cards" && (
+                <CreditCardsData eachData={eachData} />
+              )}
+              {selectedCategory === "persons" && (
+                <PersonsData eachData={eachData} />
+              )}
+              {selectedCategory === "places" && (
+                <PlacesData eachData={eachData} />
+              )}
+              {selectedCategory === "texts" && <TextData eachData={eachData} />}
+              {selectedCategory === "users" && (
+                <UsersData eachData={eachData} />
+              )}
             </Box>
           );
         })}

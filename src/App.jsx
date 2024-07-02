@@ -9,6 +9,7 @@ import DataGenerator from './pages/DataGenerator'
 
 //* COMPONENTS
 import Navbar from "./components/Navbar"
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
         <Route path="*" element={ <NotFound /> } />
         <Route path="/error" element={ <Error /> } />
       </Routes>
+
+      <Footer />
     </>
   )
 }

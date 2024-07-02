@@ -1,6 +1,21 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
+  margin-top: 72px;
   padding: 2rem;
   text-align: center;
+}
+
+.homeCard {
+  background-color: rgba(2, 12, 30, 0.8) ; 
+  width: 130px;
+  height: 130px;
+}
+
+.columnCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
 }
