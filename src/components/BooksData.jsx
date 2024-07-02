@@ -36,7 +36,7 @@ function BooksData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.title)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -48,7 +48,7 @@ function BooksData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.author)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -60,7 +60,7 @@ function BooksData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.genre)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -72,7 +72,7 @@ function BooksData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.description)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -87,7 +87,7 @@ function BooksData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.isbn)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -99,7 +99,7 @@ function BooksData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.published)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -114,7 +114,7 @@ function BooksData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.publisher)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >

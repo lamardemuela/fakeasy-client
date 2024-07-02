@@ -36,7 +36,7 @@ function PersonsData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.firstname)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -48,7 +48,7 @@ function PersonsData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.lastname)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -60,7 +60,7 @@ function PersonsData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.email)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -72,7 +72,7 @@ function PersonsData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.phone)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -87,7 +87,7 @@ function PersonsData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.birthday)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -99,7 +99,7 @@ function PersonsData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.gender)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -114,7 +114,7 @@ function PersonsData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.website)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >

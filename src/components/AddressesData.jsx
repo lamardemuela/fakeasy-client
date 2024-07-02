@@ -1,4 +1,4 @@
-import { CheckCircleOutlineRounded, CopyAllRounded } from "@mui/icons-material";
+import { CopyAllRounded } from "@mui/icons-material";
 import {
   Box,
   IconButton,
@@ -31,7 +31,7 @@ function AddressesData(props) {
           <ListItem
             secondaryAction={
               <IconButton edge="end" onClick={() => handleCopy(props.eachData.street)}>
-                <CopyAllRounded />
+                <CopyAllRounded color="primary" />
               </IconButton>
             }
           >
@@ -40,7 +40,7 @@ function AddressesData(props) {
           <ListItem
             secondaryAction={
               <IconButton edge="end" onClick={() =>handleCopy(props.eachData.streetName)}>
-                <CopyAllRounded />
+                <CopyAllRounded color="primary" />
               </IconButton>
             }
           >
@@ -49,7 +49,7 @@ function AddressesData(props) {
           <ListItem
             secondaryAction={
               <IconButton edge="end" onClick={() =>handleCopy(props.eachData.buildingNumber)}>
-                <CopyAllRounded />
+                <CopyAllRounded color="primary" />
               </IconButton>
             }
           >
@@ -58,7 +58,7 @@ function AddressesData(props) {
           <ListItem
             secondaryAction={
               <IconButton edge="end" onClick={() =>handleCopy(props.eachData.city)}>
-                <CopyAllRounded />
+                <CopyAllRounded color="primary" />
               </IconButton>
             }
           >
@@ -67,7 +67,7 @@ function AddressesData(props) {
           <ListItem
             secondaryAction={
               <IconButton edge="end" onClick={() =>handleCopy(props.eachData.zipcode)}>
-                <CopyAllRounded />
+                <CopyAllRounded color="primary" />
               </IconButton>
             }
           >
@@ -76,7 +76,7 @@ function AddressesData(props) {
           <ListItem
             secondaryAction={
               <IconButton edge="end" onClick={() =>handleCopy(props.eachData.country)}>
-                <CopyAllRounded />
+                <CopyAllRounded color="primary" />
               </IconButton>
             }
           >
@@ -84,17 +84,17 @@ function AddressesData(props) {
           </ListItem>
           <ListItem
             secondaryAction={
-              <IconButton edge="end" onClick={() =>handleCopy(props.eachData.country_code)}>
-                <CopyAllRounded />
+              <IconButton edge="end" onClick={() =>handleCopy(props.eachData.county_code)}>
+                <CopyAllRounded color="primary" />
               </IconButton>
             }
           >
-            <ListItemText primary={props.eachData.country_code} secondary="Country Code" />
+            <ListItemText primary={props.eachData.county_code} secondary="Country Code" />
           </ListItem>
           <ListItem
             secondaryAction={
               <IconButton edge="end" onClick={() =>handleCopy(props.eachData.latitude)}>
-                <CopyAllRounded />
+                <CopyAllRounded color="primary" />
               </IconButton>
             }
           >
@@ -103,7 +103,7 @@ function AddressesData(props) {
           <ListItem
             secondaryAction={
               <IconButton edge="end" onClick={() =>handleCopy(props.eachData.longitude)}>
-                <CopyAllRounded />
+                <CopyAllRounded color="primary" />
               </IconButton>
             }
           >

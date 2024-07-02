@@ -36,7 +36,7 @@ function PlacesData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.latitude)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -48,7 +48,7 @@ function PlacesData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.longitude)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >

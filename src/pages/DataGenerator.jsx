@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Button, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import CircularProgress from "@mui/material/CircularProgress";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -101,19 +100,25 @@ function DataGenerator() {
         </FormControl>
         <TextField
           id="outlined-number"
+          color="primary"
           label="Number of data items"
           type="number"
           size="small"
           value={numberOfDataItems}
           onChange={(e) => setNumberOfDataItems(e.target.value)}
-          sx={{ width: 150 }}
         />
       </Box>
       <Button
         onClick={handleGenerateData}
         disabled={selectedCategory === "" ? true : false}
-        color="secondary"
+        color="primary"
         variant="contained"
+        sx={{
+          "&.Mui-disabled": {
+            backgroundColor: "#505152",
+            color: "#979BA0",
+          },
+        }}
       >
         Generate data
       </Button>

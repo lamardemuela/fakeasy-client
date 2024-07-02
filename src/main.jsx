@@ -5,6 +5,8 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import { outlinedInputClasses } from '@mui/material/OutlinedInput';
+
 
 const darkTheme = createTheme({
   palette: {
@@ -30,6 +32,23 @@ const darkTheme = createTheme({
     fontFamily: "Raleway",
     fonWeight: 500,
   },
+  components: {
+    MuiOutlinedInput: {
+      styleOverrides: {
+        notchedOutline: {
+          borderColor: "#DBEEE2",
+        },
+        root: {
+          [`&:hover .${outlinedInputClasses.notchedOutline}`]: {
+            borderColor: '#A4FCC4',
+          },
+          [`&.Mui-focused .${outlinedInputClasses.notchedOutline}`]: {
+            borderColor: "#A4FCC4",
+          },
+        },
+      },
+    }
+  }
 });
 
 ReactDOM.createRoot(document.getElementById("root")).render(

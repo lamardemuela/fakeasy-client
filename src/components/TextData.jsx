@@ -36,7 +36,7 @@ function TextData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.title)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -48,7 +48,7 @@ function TextData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.author)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -60,7 +60,7 @@ function TextData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.genre)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -72,7 +72,7 @@ function TextData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.content)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >

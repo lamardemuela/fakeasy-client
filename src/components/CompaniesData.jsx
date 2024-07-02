@@ -37,7 +37,7 @@ function CompaniesData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.name)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -49,7 +49,7 @@ function CompaniesData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.email)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -61,7 +61,7 @@ function CompaniesData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.vat)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -73,7 +73,7 @@ function CompaniesData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.phone)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -88,34 +88,19 @@ function CompaniesData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.country)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
           <ListItemText primary={props.eachData.country} secondary="Country" />
         </ListItem>
-        {/* <ListItem
-          secondaryAction={
-            <IconButton
-              edge="end"
-              onClick={() => handleCopy(props.eachData.addresses[0].street)}
-            >
-              <CopyAllRounded />
-            </IconButton>
-          }
-        >
-          <ListItemText
-            primary={props.eachData.addresses[0].street}
-            secondary="Address"
-          />
-        </ListItem> */}
         <ListItem
           secondaryAction={
             <IconButton
               edge="end"
               onClick={() => handleCopy(props.eachData.website)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >

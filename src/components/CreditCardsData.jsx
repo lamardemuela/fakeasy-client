@@ -36,7 +36,7 @@ function CreditCardsData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.type)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -48,7 +48,7 @@ function CreditCardsData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.number)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -60,7 +60,7 @@ function CreditCardsData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.expiration)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
@@ -72,7 +72,7 @@ function CreditCardsData(props) {
               edge="end"
               onClick={() => handleCopy(props.eachData.owner)}
             >
-              <CopyAllRounded />
+              <CopyAllRounded color="primary" />
             </IconButton>
           }
         >
