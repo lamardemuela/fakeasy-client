@@ -71,7 +71,12 @@ function DataGenerator() {
         }}
       >
         <FormControl sx={{ m: 1, minWidth: 120, width: 200 }}>
-          <InputLabel id="demo-simple-select-helper-label">Category</InputLabel>
+          <InputLabel 
+          id="demo-simple-select-helper-label"
+          sx={{ top:"50%", transform:"translateY(-50%)", left: "12px" }}
+          >
+            Category
+          </InputLabel>
           <Select
             labelId="demo-simple-select-helper-label"
             id="demo-controlled-open-select"

@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { outlinedInputClasses } from '@mui/material/OutlinedInput';
+import { AuthWrapper } from "./context/auth.context.jsx";
 
 
 const darkTheme = createTheme({
@@ -45,6 +46,9 @@ const darkTheme = createTheme({
           [`&.Mui-focused .${outlinedInputClasses.notchedOutline}`]: {
             borderColor: "#A4FCC4",
           },
+          "& .MuiSvgIcon-root": {
+            color: "#DBEEE2",
+          },
         },
       },
     }
@@ -52,10 +56,12 @@ const darkTheme = createTheme({
 });
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <ThemeProvider theme={darkTheme}>
-    <CssBaseline />
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </ThemeProvider>
+  <AuthWrapper>
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ThemeProvider>
+  </AuthWrapper>
 );

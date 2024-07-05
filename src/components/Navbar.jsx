@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useContext, useState } from "react";
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -10,7 +10,8 @@ import MenuItem from "@mui/material/MenuItem";
 import Drawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../assets/fakeasy-logo.png";
-import { Link } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/auth.context.jsx";
 
 const logoStyle = {
   width: "130px",
@@ -19,7 +20,12 @@ const logoStyle = {
 };
 
 function AppAppBar() {
-  const [open, setOpen] = React.useState(false);
+  const { isLoggedIn, authenticateUser } = useContext(AuthContext)
+  console.log(isLoggedIn);
+
+  const navigate = useNavigate()
+
+  const [open, setOpen] = useState(false);
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
@@ -37,6 +43,18 @@ function AppAppBar() {
       });
       setOpen(false);
     }
+  };
+
+  const handleLogOut = async (e) => {
+    e.preventDefault()
+    // 1. removemos el token del localStorage
+    localStorage.removeItem("authToken");
+
+    // 2. actualizamos los estados
+    await authenticateUser();
+
+    // 3. redireccionamos
+    navigate("/");
   };
 
   return (
@@ -73,14 +91,14 @@ function AppAppBar() {
                 px: 0,
               }}
             >
-              <Link to="/"><img src={logo} style={logoStyle} alt="logo of sitemark" /></Link>
+              <RouterLink to="/"><img src={logo} style={logoStyle} alt="logo of sitemark" /></RouterLink>
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
                 <MenuItem
                   onClick={() => scrollToSection("features")}
                   sx={{ py: "6px", px: "12px" }}
                 >
                   <Typography variant="body2" color="text.primary">
-                    Features
+                    Home
                   </Typography>
                 </MenuItem>
                 <MenuItem
@@ -88,31 +106,7 @@ function AppAppBar() {
                   sx={{ py: "6px", px: "12px" }}
                 >
                   <Typography variant="body2" color="text.primary">
-                    Testimonials
-                  </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection("highlights")}
-                  sx={{ py: "6px", px: "12px" }}
-                >
-                  <Typography variant="body2" color="text.primary">
-                    Highlights
-                  </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection("pricing")}
-                  sx={{ py: "6px", px: "12px" }}
-                >
-                  <Typography variant="body2" color="text.primary">
-                    Pricing
-                  </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection("faq")}
-                  sx={{ py: "6px", px: "12px" }}
-                >
-                  <Typography variant="body2" color="text.primary">
-                    FAQ
+                    Data Generator
                   </Typography>
                 </MenuItem>
               </Box>
@@ -124,26 +118,38 @@ function AppAppBar() {
                 alignItems: "center",
               }}
             >
-              <Button
+              {isLoggedIn === false ? (
+                <>
+              
+                <Button
                 color="primary"
                 variant="text"
                 size="small"
-                component="a"
-                href="/material-ui/getting-started/templates/sign-in/"
-                target="_blank"
+                component={RouterLink}
+                to="/login"
               >
-                Sign in
+                Login
               </Button>
               <Button
                 color="primary"
                 variant="contained"
                 size="small"
-                component="a"
-                href="/material-ui/getting-started/templates/sign-up/"
-                target="_blank"
+                component={RouterLink}
+                to="/signup"
               >
                 Sign up
               </Button>
+              </>
+              ) : (
+                <Button
+                color="primary"
+                variant="text"
+                size="small"
+                onClick={handleLogOut}
+              >
+                Log out
+              </Button>
+              )}
             </Box>
             <Box sx={{ display: { sm: "", md: "none" } }}>
               <Button
@@ -192,9 +198,8 @@ function AppAppBar() {
                     <Button
                       color="primary"
                       variant="contained"
-                      component="a"
-                      href="/material-ui/getting-started/templates/sign-up/"
-                      target="_blank"
+                      component={RouterLink}
+                      to="/signup"
                       sx={{ width: "100%" }}
                     >
                       Sign up
@@ -204,12 +209,11 @@ function AppAppBar() {
                     <Button
                       color="primary"
                       variant="outlined"
-                      component="a"
-                      href="/material-ui/getting-started/templates/sign-in/"
-                      target="_blank"
+                      component={RouterLink}
+                      to="/login"
                       sx={{ width: "100%" }}
                     >
-                      Sign in
+                      Login
                     </Button>
                   </MenuItem>
                 </Box>
