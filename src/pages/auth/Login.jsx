@@ -35,7 +35,7 @@ function Login() {
     try {
       // POST "api/auth/login"
       const response = await service.post("/auth/login", userCredentials)
-
+      console.log(response);
       // token
       localStorage.setItem("authToken", response.data.authToken)
 

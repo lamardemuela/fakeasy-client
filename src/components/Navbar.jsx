@@ -31,19 +31,6 @@ function AppAppBar() {
     setOpen(newOpen);
   };
 
-  const scrollToSection = (sectionId) => {
-    const sectionElement = document.getElementById(sectionId);
-    const offset = 128;
-    if (sectionElement) {
-      const targetScroll = sectionElement.offsetTop - offset;
-      sectionElement.scrollIntoView({ behavior: "smooth" });
-      window.scrollTo({
-        top: targetScroll,
-        behavior: "smooth",
-      });
-      setOpen(false);
-    }
-  };
 
   const handleLogOut = async (e) => {
     e.preventDefault()
@@ -94,18 +81,16 @@ function AppAppBar() {
               <RouterLink to="/"><img src={logo} style={logoStyle} alt="logo of sitemark" /></RouterLink>
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
                 <MenuItem
-                  onClick={() => scrollToSection("features")}
                   sx={{ py: "6px", px: "12px" }}
                 >
-                  <Typography variant="body2" color="text.primary">
+                  <Typography variant="body2" color="text.primary" component={RouterLink} to="/" sx={{textDecoration:"none"}}>
                     Home
                   </Typography>
                 </MenuItem>
                 <MenuItem
-                  onClick={() => scrollToSection("testimonials")}
                   sx={{ py: "6px", px: "12px" }}
                 >
-                  <Typography variant="body2" color="text.primary">
+                  <Typography variant="body2" color="text.primary" component={RouterLink} to="/generate-data" sx={{textDecoration:"none"}}>
                     Data Generator
                   </Typography>
                 </MenuItem>
@@ -178,22 +163,15 @@ function AppAppBar() {
                       flexGrow: 1,
                     }}
                   ></Box>
-                  <MenuItem onClick={() => scrollToSection("features")}>
-                    Features
+                  <MenuItem component={RouterLink} to="/">
+                    Home
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection("testimonials")}>
-                    Testimonials
+                  <MenuItem component={RouterLink} to="/generate-data">
+                    Data Generator
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection("highlights")}>
-                    Highlights
-                  </MenuItem>
-                  <MenuItem onClick={() => scrollToSection("pricing")}>
-                    Pricing
-                  </MenuItem>
-                  <MenuItem onClick={() => scrollToSection("faq")}>
-                    FAQ
-                  </MenuItem>
+        
                   <Divider />
+
                   <MenuItem>
                     <Button
                       color="primary"

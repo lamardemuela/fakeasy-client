@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -15,6 +15,8 @@ import PersonsData from "../components/PersonsData";
 import PlacesData from "../components/PlacesData";
 import TextData from "../components/TextData";
 import UsersData from "../components/UsersData";
+import { saveAs } from 'file-saver';
+import { AuthContext } from "../context/auth.context";
 
 function DataGenerator() {
   const categoriesArr = [
@@ -27,6 +29,8 @@ function DataGenerator() {
     "texts",
     "users",
   ];
+
+  const { isLoggedIn } = useContext(AuthContext)
 
   const navigate = useNavigate();
 
@@ -52,6 +56,23 @@ function DataGenerator() {
     setSelectedCategory(e.target.value);
   };
 
+  const saveDownload = (fileName) => {
+    const downloads = JSON.parse(localStorage.getItem("downloads")) || []
+    downloads.push({ fileName, date: new Date().toISOString() })
+    localStorage.setItem("downloads", JSON.stringify(downloads))
+  }
+
+  const exportToJSON = () => {
+    if(isLoggedIn === true){
+      const fileName = `data_${selectedCategory}.json`
+      const blob = new Blob([JSON.stringify(dataGenerated, null, 2)], { type: 'application/json' });
+      saveAs(blob, fileName);
+      saveDownload(fileName)
+    }else{
+      navigate("/signup")
+    }
+  }
+
   return (
     <Box
       sx={{
@@ -73,7 +94,7 @@ function DataGenerator() {
         <FormControl sx={{ m: 1, minWidth: 120, width: 200 }}>
           <InputLabel 
           id="demo-simple-select-helper-label"
-          sx={{ top:"50%", transform:"translateY(-50%)", left: "12px" }}
+          // sx={{ top:"50%", transform:"translateY(-50%)", left: "12px" }}
           >
             Category
           </InputLabel>
@@ -126,6 +147,20 @@ function DataGenerator() {
         }}
       >
         Generate data
+      </Button>
+      <Button
+        onClick={exportToJSON}
+        disabled={dataGenerated === null ? true : false}
+        color="secondary"
+        variant="contained"
+        sx={{
+          "&.Mui-disabled": {
+            backgroundColor: "#505152",
+            color: "#979BA0",
+          },
+        }}
+      >
+        Export to JSON
       </Button>
       {dataGenerated != null &&
         dataGenerated.map((eachData, index) => {
