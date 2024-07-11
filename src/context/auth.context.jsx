@@ -7,7 +7,7 @@ const AuthContext = createContext()
 function AuthWrapper(props) {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [loggedUserId, setLoggedUserId] = useState(null)
-    // const [isAuthenticating, setIsAuthenticating] = useState(true)
+    const [isAuthenticating, setIsAuthenticating] = useState(true)
 
     const authenticateUser = async () => {
         // token
@@ -30,13 +30,13 @@ function AuthWrapper(props) {
             // si el token es valido:
             setIsLoggedIn(true)
             setLoggedUserId(response.data.payload._id)
-            // setIsAuthenticating(false)
+            setIsAuthenticating(false)
 
         } catch (error) {
             // si el token no es valido o ha expirado:
             setIsLoggedIn(false)
             setLoggedUserId(null)
-            // setIsAuthenticating(false)
+            setIsAuthenticating(false)
         }
     }
 
@@ -46,14 +46,14 @@ function AuthWrapper(props) {
         authenticateUser
     }
 
-    // useEffect(() => {
-    //     authenticateUser()
-    // }, [])
+    useEffect(() => {
+        authenticateUser()
+    }, [])
 
-    //clausula de guardia
-    // if (isAuthenticating === true) {
-    //     return <CircularProgress />
-    // }
+    // clausula de guardia
+    if (isAuthenticating === true) {
+        return <CircularProgress />
+    }
 
   return (
     <AuthContext.Provider value={passedContext}>

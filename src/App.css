@@ -27,3 +27,80 @@
 .inputStyle {
   width: 250px;
 }
+
+.heroSectionContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
+.heroSectionTextContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+.heroSectionTextAlign {
+  text-align: left;
+  line-height: 1;
+}
+
+#sectionTitle {
+  font-size: 64px;
+  font-weight: 800;
+  width: 100%;
+}
+
+#hero-img {
+  width: 500px;
+}
+
+@media (width < 918px){
+
+  .heroSectionContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .heroSectionTextContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  }
+
+  .heroSectionTextAlign {
+    text-align: center;
+    line-height: 1;
+  }
+
+  #sectionTitle {
+    font-size: 56px;
+    font-weight: 800;
+    width: 100%;
+  }
+
+  #hero-img {
+    width: 450px;
+  }
+
+}
+
+@media (width < 450px){
+
+  #hero-img {
+    width: 300px;
+  }
+
+  #sectionTitle {
+    font-size: 54px;
+    font-weight: 800;
+    width: 100%;
+  }
+
+}

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import {
   Typography,
   Box,
@@ -8,6 +8,9 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  List,
+  ListItem,
+  ListItemText,
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -19,40 +22,21 @@ import creditCard from "../assets/credit-card.png";
 import person from "../assets/person.png";
 import address from "../assets/address.png";
 import text from "../assets/text.png";
-import { AuthContext } from "../context/auth.context";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 function Home() {
-  const { isLoggedIn } = useContext(AuthContext);
-
-  const [downloads, setDownloads] = useState([]);
-
-  useEffect(() => {
-    const savedDownloads = JSON.parse(localStorage.getItem("downloads")) || [];
-    setDownloads(savedDownloads);
-    console.log(downloads);
-  }, []);
-
-  const getFileContent = (fileName) => JSON.parse(localStorage.getItem(fileName))
-
   return (
     <Box
       sx={{
         display: "flex",
         flexDirection: "column",
+        justifyContent:"center",
+        alignItems:"center",
         gap: "24px",
         width: "100%",
       }}
     >
-      {isLoggedIn === false && (
-        <>
           <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              gap: "32px",
-            }}
+            className="heroSectionContainer"
           >
             <Box
               component={motion.div}
@@ -60,36 +44,26 @@ function Home() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
             >
-              <img src={heroIllustration} alt="illustration" width="500px" />
+              <img id="hero-img" src={heroIllustration} alt="illustration" />
             </Box>
             <Box
               component={motion.div}
               initial={{ opacity: 0, x: 700 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.3 }}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-                justifyContent: "flex-start",
-                gap: "16px",
-              }}
+              className="heroSectionTextContainer"
             >
               <Typography
                 variant="h5"
-                sx={{
-                  fontSize: "64px",
-                  fontWeight: 800,
-                  width: "100%",
-                  textAlign: "left",
-                  lineHeight: "1",
-                }}
+                className="heroSectionTextAlign"
+                id="sectionTitle"
               >
                 Generate fake data easily
               </Typography>
               <Typography
                 variant="body"
-                sx={{ width: "100%", textAlign: "left" }}
+                className="heroSectionTextAlign"
+                sx={{ width: "100%", lineHeight:1.5 }}
               >
                 Select a data category and start generating fictitious
                 information for your testing and development needs.
@@ -99,6 +73,7 @@ function Home() {
                 variant="contained"
                 component={RouterLink}
                 to="/generate-data"
+                className="heroSectionTextAlign"
               >
                 Get started
               </Button>
@@ -212,44 +187,6 @@ function Home() {
               Go Data Generator
             </Button>
           </Box>
-        </>
-      )}
-
-      {isLoggedIn === true && (
-        <>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "flex-start",
-            }}
-          >
-            <Typography variant="h6"> Your lasts downloads </Typography>
-            <Button
-              color="primary"
-              variant="contained"
-              component={RouterLink}
-              to="/generate-data"
-            >
-              Generate new data
-            </Button>
-          </Box>
-
-          {downloads.map((eachDownload, index) => {
-            return (
-              <Accordion key={index}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon color="primary" />}
-                  aria-controls="panel1-content"
-                >
-                  {eachDownload.fileName}
-                </AccordionSummary>
-                <AccordionDetails> {JSON.stringify(getFileContent(eachDownload.fileName), null, 2)} </AccordionDetails>
-              </Accordion>
-            );
-          })}
-        </>
-      )}
     </Box>
   );
 }

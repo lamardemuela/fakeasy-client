@@ -20,10 +20,10 @@ const logoStyle = {
 };
 
 function AppAppBar() {
-  const { isLoggedIn, authenticateUser } = useContext(AuthContext)
+  const { isLoggedIn, authenticateUser } = useContext(AuthContext);
   console.log(isLoggedIn);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
 
@@ -31,9 +31,8 @@ function AppAppBar() {
     setOpen(newOpen);
   };
 
-
   const handleLogOut = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     // 1. removemos el token del localStorage
     localStorage.removeItem("authToken");
 
@@ -78,19 +77,29 @@ function AppAppBar() {
                 px: 0,
               }}
             >
-              <RouterLink to="/"><img src={logo} style={logoStyle} alt="logo of sitemark" /></RouterLink>
+              <RouterLink to="/">
+                <img src={logo} style={logoStyle} alt="logo of sitemark" />
+              </RouterLink>
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                <MenuItem
-                  sx={{ py: "6px", px: "12px" }}
-                >
-                  <Typography variant="body2" color="text.primary" component={RouterLink} to="/" sx={{textDecoration:"none"}}>
+                <MenuItem sx={{ py: "6px", px: "12px" }}>
+                  <Typography
+                    variant="body2"
+                    color="text.primary"
+                    component={RouterLink}
+                    to="/"
+                    sx={{ textDecoration: "none" }}
+                  >
                     Home
                   </Typography>
                 </MenuItem>
-                <MenuItem
-                  sx={{ py: "6px", px: "12px" }}
-                >
-                  <Typography variant="body2" color="text.primary" component={RouterLink} to="/generate-data" sx={{textDecoration:"none"}}>
+                <MenuItem sx={{ py: "6px", px: "12px" }}>
+                  <Typography
+                    variant="body2"
+                    color="text.primary"
+                    component={RouterLink}
+                    to="/generate-data"
+                    sx={{ textDecoration: "none" }}
+                  >
                     Data Generator
                   </Typography>
                 </MenuItem>
@@ -105,35 +114,34 @@ function AppAppBar() {
             >
               {isLoggedIn === false ? (
                 <>
-              
-                <Button
-                color="primary"
-                variant="text"
-                size="small"
-                component={RouterLink}
-                to="/login"
-              >
-                Login
-              </Button>
-              <Button
-                color="primary"
-                variant="contained"
-                size="small"
-                component={RouterLink}
-                to="/signup"
-              >
-                Sign up
-              </Button>
-              </>
+                  <Button
+                    color="primary"
+                    variant="text"
+                    size="small"
+                    component={RouterLink}
+                    to="/login"
+                  >
+                    Login
+                  </Button>
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    size="small"
+                    component={RouterLink}
+                    to="/signup"
+                  >
+                    Sign up
+                  </Button>
+                </>
               ) : (
                 <Button
-                color="primary"
-                variant="text"
-                size="small"
-                onClick={handleLogOut}
-              >
-                Log out
-              </Button>
+                  color="primary"
+                  variant="text"
+                  size="small"
+                  onClick={handleLogOut}
+                >
+                  Log out
+                </Button>
               )}
             </Box>
             <Box sx={{ display: { sm: "", md: "none" } }}>
@@ -169,31 +177,46 @@ function AppAppBar() {
                   <MenuItem component={RouterLink} to="/generate-data">
                     Data Generator
                   </MenuItem>
-        
+
                   <Divider />
 
-                  <MenuItem>
-                    <Button
-                      color="primary"
-                      variant="contained"
-                      component={RouterLink}
-                      to="/signup"
-                      sx={{ width: "100%" }}
-                    >
-                      Sign up
-                    </Button>
-                  </MenuItem>
-                  <MenuItem>
-                    <Button
-                      color="primary"
-                      variant="outlined"
-                      component={RouterLink}
-                      to="/login"
-                      sx={{ width: "100%" }}
-                    >
-                      Login
-                    </Button>
-                  </MenuItem>
+                  {isLoggedIn === false ? (
+                    <>
+                      <MenuItem>
+                        <Button
+                          color="primary"
+                          variant="contained"
+                          component={RouterLink}
+                          to="/signup"
+                          sx={{ width: "100%" }}
+                        >
+                          Sign up
+                        </Button>
+                      </MenuItem>
+                      <MenuItem>
+                        <Button
+                          color="primary"
+                          variant="outlined"
+                          component={RouterLink}
+                          to="/login"
+                          sx={{ width: "100%" }}
+                        >
+                          Login
+                        </Button>
+                      </MenuItem>
+                    </>
+                  ) : (
+                    <MenuItem>
+                      <Button
+                        color="primary"
+                        variant="text"
+                        size="small"
+                        onClick={handleLogOut}
+                      >
+                        Log out
+                      </Button>
+                    </MenuItem>
+                  )}
                 </Box>
               </Drawer>
             </Box>

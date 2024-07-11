@@ -30,7 +30,7 @@ function DataGenerator() {
     "users",
   ];
 
-  const { isLoggedIn } = useContext(AuthContext)
+  const { isLoggedIn, loggedUserId } = useContext(AuthContext)
 
   const navigate = useNavigate();
 
@@ -57,9 +57,9 @@ function DataGenerator() {
   };
 
   const saveDownload = (fileName) => {
-    const downloads = JSON.parse(localStorage.getItem("downloads")) || []
+    const downloads = JSON.parse(localStorage.getItem(`${loggedUserId}_downloads`)) || []
     downloads.push({ fileName, date: new Date().toISOString() })
-    localStorage.setItem("downloads", JSON.stringify(downloads))
+    localStorage.setItem(`${loggedUserId}_downloads`, JSON.stringify(downloads))
   }
 
   const exportToJSON = () => {
@@ -67,6 +67,7 @@ function DataGenerator() {
       const fileName = `data_${selectedCategory}.json`
       const blob = new Blob([JSON.stringify(dataGenerated, null, 2)], { type: 'application/json' });
       saveAs(blob, fileName);
+      localStorage.setItem(`${loggedUserId}_${fileName}`, JSON.stringify(dataGenerated, null, 2))
       saveDownload(fileName)
     }else{
       navigate("/signup")
@@ -89,12 +90,12 @@ function DataGenerator() {
           gap: "8px",
           justifyContent: "center",
           alignItems: "center",
+          flexWrap:"wrap"
         }}
       >
         <FormControl sx={{ m: 1, minWidth: 120, width: 200 }}>
           <InputLabel 
           id="demo-simple-select-helper-label"
-          // sx={{ top:"50%", transform:"translateY(-50%)", left: "12px" }}
           >
             Category
           </InputLabel>
