@@ -35,7 +35,7 @@ function Signup() {
 
     try {
       const response = await service.post(
-        "http://localhost:5005/api/auth/signup",
+        "/auth/signup",
         newUser
       );
       console.log(response);
