@@ -55,6 +55,14 @@ function DataGenerator() {
   const handleSelectChange = (e) => {
     setSelectedCategory(e.target.value);
   };
+
+  const handleNumberChange = (e) => {
+    if(numberOfDataItems <= 1){
+      setNumberOfDataItems(1)
+    }else{
+      setNumberOfDataItems(e.target.value)
+    }
+  }
   
 
   const saveDownload = (fileName) => {
@@ -133,7 +141,7 @@ function DataGenerator() {
           type="number"
           size="small"
           value={numberOfDataItems}
-          onChange={(e) => setNumberOfDataItems(e.target.value)}
+          onChange={handleNumberChange}
         />
       </Box>
       <Button
