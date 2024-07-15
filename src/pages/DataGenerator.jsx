@@ -55,6 +55,7 @@ function DataGenerator() {
   const handleSelectChange = (e) => {
     setSelectedCategory(e.target.value);
   };
+  
 
   const saveDownload = (fileName) => {
     const downloads = JSON.parse(localStorage.getItem(`${loggedUserId}_downloads`)) || []

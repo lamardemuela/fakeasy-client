@@ -23,7 +23,7 @@ function AddressesData(props) {
   }
 
   return (
-    <Box sx={{ width:"700px", display:"flex", flexDirection:"column", justifyContent:"space-evenly", backgroundColor: "rgba(255, 255, 255, 0.08)", padding: "32px", borderRadius: "8px" }}>
+    <Box sx={{ display:"flex", flexDirection:"column", justifyContent:"space-evenly", backgroundColor: "rgba(255, 255, 255, 0.08)", padding: "32px", borderRadius: "8px" }}>
       <Typography variant="h6">
         Address Data
       </Typography>

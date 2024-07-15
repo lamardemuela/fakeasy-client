@@ -20,7 +20,6 @@ function CompaniesData(props) {
   return (
     <Box
       sx={{
-        width: "700px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-evenly",
