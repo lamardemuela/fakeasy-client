@@ -37,31 +37,49 @@ Fakeasy is a fictional data generation application that allows users to generate
 
 ## User Stories
 
-**NOTE -**  List here all the actions a user can do in the app. Example:
-
-- **404** - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault 
+- **404** - As a user, I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault.
 - **500** - As a user I want to see a nice error page when the super team screws it up so that I know that is not my fault
-- **homepage** - As a user I want to be able to access the homepage so that I see what the app is about and login and signup
-- **sign up** - As a user I want to sign up on the webpage so that I can see all the events that I could attend
-- **login** - As a user I want to be able to log in on the webpage so that I can get back to my account
-- **logout** - As a user I want to be able to log out from the webpage so that I can make sure no one will access my account
-- **events list** - As a user I want to see all the events available so that I can choose which ones I want to attend
-- **events create** - As a user I want to create an event so that I can invite others to attend
+- **Login** - As a user, I want to log in to the app so that I can access my personalized features as download JSON files.
+- **Signup** - As a new user, I want to create an account so that I can start using the app and download JSON files.
+- **Generate Data** - As user, I want to select a category and the number of data items to generate so that I can create specific datasets.
+- **Export to JSON** - As a logged-in user, I want to export the generated data to a JSON file so that I can use it for my own purposes.
+- **Logout** - As a logged-in user, I want to log out of the app so that my session is secured.
+- **Home** - As a user, I want to see the home page where the app's features and roles are explained.
 
 ## Client Routes
 
-**NOTE -** Use below table to list your frontend routes
-
 ## React Router Routes (React App)
-| Path                      | Page            | Components        | Permissions              | Behavior                                                      |
-| ------------------------- | ----------------| ----------------  | ------------------------ | ------------------------------------------------------------  |
-| `/`                       | Home            |                   | public                   | Home page                                                     |
-| `/signup`                 | Signup          |                   | anon only `<IsAnon>`     | Signup form, link to login, navigate to homepage after signup |
-| `/login`                  | Login           |                   | anon only `<IsAnon>`     | Login form, link to signup, navigate to homepage after login  |
-| `/profile`                | Profile         | EditProfile       | user only `<IsPrivate>`  | Navigate to homepage after logout, expire session             |
-| `/games/list`             | GameList        | AddGame, GameCard | user only `<IsPrivate>`  | Shows all films on backlog                                    |
-| `/games/edit`             | GamesEdit       |                   | user only `<IsPrivate>`  | Shows all games on backlog                                    |
-| `/games/favourites`       | FavouriteList   | GameCard          | user only `<IsPrivate>`  | Shows all games on backlog                                    |
+
+- **Home** 
+  - **Path:** `/`
+  - **Component:** `Home`
+  - **Description:** The landing page where the app's features and roles are explained.
+
+- **Generate Data** 
+  - **Path:** `/generate-data`
+  - **Component:** `DataGenerator`
+  - **Description:** Page where users can generate data based on selected categories.
+
+- **Login** 
+  - **Path:** `/login`
+  - **Component:** `Login`
+  - **Description:** Login page for users to access their accounts.
+
+- **Signup** 
+  - **Path:** `/signup`
+  - **Component:** `Signup`
+  - **Description:** Signup page for new users to create an account.
+
+- **Not Found**
+  - **Path:** `*`
+  - **Component:** `NotFound`
+  - **Description:** A 404 page that appears when users navigate to a non-existent route.
+
+- **Error**
+  - **Path:** `/error`
+  - **Component:** `Error`
+  - **Description:** Error page that displays when there is a server or client-side error.
+
 
 ## Other Components
 
@@ -71,20 +89,10 @@ Fakeasy is a fictional data generation application that allows users to generate
 ## Services
 
 - Auth Service
-  - auth.login(user)
-  - auth.signup(user)
-  - auth.verify()
-
-- Backlog Service
-  - game.filter(type, status)
-  - game.detail(id)
-  - game.add(id)
-  - game.delete(id)
-  - game.update(id)
+    - Base URL: https://your-backend-api.com/api/auth
   
 - External API
-  - gameApi.details
-  - gameApi.list
+  - https://fakerapi.it/api/v1/
   
 ## Context
 
@@ -93,24 +101,12 @@ Fakeasy is a fictional data generation application that allows users to generate
   
 ## Links
 
-### Collaborators
-
-[Developer 1 name](www.github-url.com)
-
-[Developer 2 name](www.github-url.com)
-
 ### Project
 
-[Repository Link Client](www.your-github-url-here.com)
+[Repository Link Client](https://github.com/lamardemuela/fakeasy-client)
 
-[Repository Link Server](www.your-github-url-here.com)
+[Repository Link Server](https://github.com/lamardemuela/fakeasy-server)
 
-[Deploy Link](www.your-deploy-url-here.com)
+[Deploy Link](https://fakeasy.netlify.app)
 
-### Trello
-
-[Link to your trello board](www.your-trello-url-here.com)
-
-### Slides
-
-[Slides Link](www.your-slides-url-here.com)
+[Linkedin](https://www.linkedin.com/in/agueda-muela/)
