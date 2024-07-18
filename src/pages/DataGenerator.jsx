@@ -57,9 +57,9 @@ function DataGenerator() {
   };
 
   const handleNumberChange = (e) => {
-    if(numberOfDataItems <= 1){
+    if(numberOfDataItems < 1){
       setNumberOfDataItems(1)
-    }else{
+    }else if(numberOfDataItems >= 1){
       setNumberOfDataItems(e.target.value)
     }
   }
